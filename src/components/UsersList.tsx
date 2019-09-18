@@ -8,10 +8,11 @@ interface IProps {
 }
 
 const StyledUserList = styled.ul`
-  margin-top: 1.5rem;
   display: flex;
   flex-direction: column;
-  margin-left: 6rem;
+  margin: 1.5rem 0 0 13rem;
+  width: 500px;
+  max-width: 500px;
 `;
 const UsersList: FC<IProps> = ({ data }) => {
   return (

@@ -5,7 +5,7 @@ import { IUser } from '../data';
 const UserWrapper = styled.div`
   display: flex;
   font-weight: 500;
-  justify-content: flex;
+  justify-content: baseline;
 `;
 
 const UserSpan = styled.span`

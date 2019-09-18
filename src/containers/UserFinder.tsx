@@ -4,6 +4,7 @@ import { Input, Title, Wrapper } from '../components';
 import UsersList from '../components/UsersList';
 import { instanceOfUserArray, IUser } from '../data';
 import { apiCall } from '../helpers/api';
+import { filterUsers } from '../helpers/filterUsers';
 import useDebounce from '../hooks/useDebounce';
 
 const UserFinder: FC = () => {
@@ -12,6 +13,7 @@ const UserFinder: FC = () => {
     data: [],
     error: '',
   });
+  const [filteredData, setFilteredData] = useState<IUser[]>([]);
 
   const getUserData = async () => {
     try {
@@ -32,12 +34,21 @@ const UserFinder: FC = () => {
     console.log(payload);
   }, [payload]);
 
+  useEffect(() => {
+    if (debouncedUserName) {
+      setFilteredData(filterUsers(payload.data)(debouncedUserName));
+    } else {
+      setFilteredData(payload.data);
+    }
+    console.warn(filteredData);
+  }, [debouncedUserName, payload.data]);
+
   return (
     <Wrapper>
       <Title>Users list</Title>
       <Input value={userName} handleValueChange={setUserName} />
       {payload.data.length > 0 && instanceOfUserArray(payload.data) && (
-        <UsersList data={payload.data} />
+        <UsersList data={filteredData} />
       )}
     </Wrapper>
   );

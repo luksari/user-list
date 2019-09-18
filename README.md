@@ -1,3 +1,9 @@
+# 💥 Supercalifragilisticexpialidocious User List 💥
+
+This app allows you to get 10 users from [`MOCK API`](https://jsonplaceholder.typicode.com), filter this collection by user name and that's it. I hope you like it and will share your experience with filtering users 🥇
+
+## Some things about better App that I have used as boilerplate
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

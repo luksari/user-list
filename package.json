@@ -6,6 +6,7 @@
     "@babel/core": "7.5.5",
     "@svgr/webpack": "4.3.2",
     "@types/jest": "^24.0.18",
+    "@types/lodash": "^4.14.138",
     "@types/node": "^12.7.5",
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
@@ -39,6 +40,7 @@
     "jest-environment-jsdom-fourteen": "0.1.0",
     "jest-resolve": "24.8.0",
     "jest-watch-typeahead": "0.3.1",
+    "lodash": "^4.17.15",
     "mini-css-extract-plugin": "0.5.0",
     "optimize-css-assets-webpack-plugin": "5.0.3",
     "pnp-webpack-plugin": "1.5.0",
@@ -51,11 +53,13 @@
     "react-app-polyfill": "^1.0.2",
     "react-dev-utils": "^9.0.3",
     "react-dom": "^16.9.0",
+    "react-use": "^12.2.0",
     "resolve": "1.12.0",
     "resolve-url-loader": "3.1.0",
     "sass-loader": "7.2.0",
     "semver": "6.3.0",
     "style-loader": "1.0.0",
+    "styled-components": "^4.3.2",
     "terser-webpack-plugin": "1.4.1",
     "ts-pnp": "1.1.2",
     "typescript": "3.6.3",
@@ -63,7 +67,8 @@
     "webpack": "4.39.1",
     "webpack-dev-server": "3.2.1",
     "webpack-manifest-plugin": "2.0.4",
-    "workbox-webpack-plugin": "4.3.1"
+    "workbox-webpack-plugin": "4.3.1",
+    "wretch": "^1.5.4"
   },
   "scripts": {
     "start": "node scripts/start.js",
@@ -147,6 +152,14 @@
     ]
   },
   "babel": {
+    "plugins": [
+      [
+        "babel-plugin-styled-components",
+        {
+          "pure": true
+        }
+      ]
+    ],
     "presets": [
       "react-app"
     ]

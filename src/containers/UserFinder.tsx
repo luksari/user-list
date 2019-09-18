@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
-import wretch from 'wretch';
 import { Input, Title, Wrapper } from '../components';
+import ErrorCard from '../components/ErrorCard';
 import UsersList from '../components/UsersList';
 import { instanceOfUserArray, IUser } from '../data';
 import { apiCall } from '../helpers/api';
@@ -18,7 +18,7 @@ const UserFinder: FC = () => {
   const getUserData = async () => {
     try {
       const data = await apiCall<IUser[]>('https://jsonplaceholder.typicode.com/users');
-      setPayload(prev => ({ ...prev, data, error: '' }));
+      setPayload(prev => ({ ...prev, data, error: 'Nieszkodliwy error' }));
     } catch (error) {
       setPayload(prev => ({ ...prev, error }));
     }
@@ -31,25 +31,23 @@ const UserFinder: FC = () => {
   }, []);
 
   useEffect(() => {
-    console.log(payload);
-  }, [payload]);
-
-  useEffect(() => {
     if (debouncedUserName) {
       setFilteredData(filterUsers(payload.data)(debouncedUserName));
     } else {
       setFilteredData(payload.data);
     }
-    console.warn(filteredData);
   }, [debouncedUserName, payload.data]);
 
   return (
     <Wrapper>
       <Title>Users list</Title>
       <Input value={userName} handleValueChange={setUserName} />
-      {payload.data.length > 0 && instanceOfUserArray(payload.data) && (
+      {instanceOfUserArray(filteredData) ? (
         <UsersList data={filteredData} />
+      ) : (
+        <ErrorCard message={`Brak rekordów \u{1F622}`} />
       )}
+      {payload.error && <ErrorCard message={payload.error} />}
     </Wrapper>
   );
 };

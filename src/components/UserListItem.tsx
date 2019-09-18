@@ -11,7 +11,7 @@ const UserWrapper = styled.div`
 const UserSpan = styled.span`
   display: flex;
   margin: 0 12px;
-  color: #c9c9c9;
+  color: #aeaeae;
   align-self: flex-end;
 `;
 

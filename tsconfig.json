@@ -20,6 +20,6 @@
     "jsx": "react"
   },
   "include": [
-    "src"
+    "src", "src/styled/Title.tsx", "src/styled/Wrapper.tsx"
   ]
 }

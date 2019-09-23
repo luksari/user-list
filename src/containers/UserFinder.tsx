@@ -1,11 +1,12 @@
 import React, { FC, useEffect, useState } from 'react';
-import { Input, Title, Wrapper } from '../components';
+import { Input } from '../components';
 import ErrorCard from '../components/ErrorCard';
 import UsersList from '../components/UsersList';
 import { instanceOfUserArray, IUser } from '../data';
 import { apiCall } from '../helpers/api';
 import { filterUsers } from '../helpers/filterUsers';
 import useDebounce from '../hooks/useDebounce';
+import { StyledTitle, Wrapper } from '../styled';
 
 const UserFinder: FC = () => {
   const [userName, setUserName] = useState('');
@@ -18,7 +19,7 @@ const UserFinder: FC = () => {
   const getUserData = async () => {
     try {
       const data = await apiCall<IUser[]>('https://jsonplaceholder.typicode.com/users');
-      setPayload(prev => ({ ...prev, data, error: 'Nieszkodliwy error' }));
+      setPayload(prev => ({ ...prev, data, error: '\u{1F4A3} Meaningless error \u{1F4A3}' }));
     } catch (error) {
       setPayload(prev => ({ ...prev, error }));
     }
@@ -40,12 +41,12 @@ const UserFinder: FC = () => {
 
   return (
     <Wrapper>
-      <Title>Users list</Title>
+      <StyledTitle>Users list</StyledTitle>
       <Input value={userName} handleValueChange={setUserName} />
       {instanceOfUserArray(filteredData) ? (
         <UsersList data={filteredData} />
       ) : (
-        <ErrorCard message={`Brak rekordów \u{1F622}`} />
+        <ErrorCard message={`No data \u{1F622}`} />
       )}
       {payload.error && <ErrorCard message={payload.error} />}
     </Wrapper>

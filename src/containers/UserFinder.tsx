@@ -40,8 +40,13 @@ const UserFinder: FC = () => {
 
     // Created this timeout to show indicator
     // If you don't want to be bothered by long debounce with indicator
+<<<<<<< HEAD
     // Comment lines (:45:53, :62) and Uncomment lines :54:60
 
+=======
+    // Comment this
+    // vvvvvvvvvvvvvvvvvvvvvvvvv
+>>>>>>> 8a865e0b0c8c0e5376715383a0695093aac237dd
     const timer = setTimeout(() => {
       if (debouncedUserName) {
         setFilteredData(filterUsers(payload.data)(debouncedUserName));
@@ -51,6 +56,11 @@ const UserFinder: FC = () => {
         setShowIndicator(false);
       }
     }, 2000);
+<<<<<<< HEAD
+=======
+    // Uncomment this
+    // vvvvvvvvvvvvvvvvvvvvvvvvvvvv
+>>>>>>> 8a865e0b0c8c0e5376715383a0695093aac237dd
     // if (debouncedUserName) {
     //   setFilteredData(filterUsers(payload.data)(debouncedUserName));
     //   setShowIndicator(false);

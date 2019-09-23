@@ -4,3 +4,4 @@ export * from './StyledInput';
 export * from './StyledTitle';
 export * from './StyledUserList';
 export * from './Wrapper';
+export * from './StyledLoader';

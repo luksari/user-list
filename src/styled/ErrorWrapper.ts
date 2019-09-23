@@ -12,5 +12,5 @@ export const ErrorWrapper = styled.div`
   background: #bb2727;
   border-radius: 15px 15px 0 0;
   padding: 15px;
-  animation: ${slideUp} 4s linear both;
+  animation: ${slideUp} 2.5s linear both;
 `;
